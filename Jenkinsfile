@@ -4,7 +4,7 @@ pipeline {
     stages { 
         stage('Checkout') { 
             steps { 
-                git 'https://github.com/Alexrusso3108/JENKINS-GRADLE-INTEGRATION.git
+                git 'https://github.com/Alexrusso3108/JENKINS-GRADLE-INTEGRATION.git'
 ' 
             } 
         } 
