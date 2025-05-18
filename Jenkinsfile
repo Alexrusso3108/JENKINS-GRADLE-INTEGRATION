@@ -1,27 +1,29 @@
- 
-pipeline { 
-    agent any 
-    stages { 
-        stage('Checkout') { 
-            steps { 
-                git 'https://github.com/Alexrusso3108/JENKINS-GRADLE-INTEGRATION.git'
+pipeline {
+    agent any
 
-            } 
-        } 
-        stage('Build') { 
-            steps { 
-                sh 'mvn clean install' 
-            } 
-        } 
-        stage('Test') { 
-            steps { 
-                sh 'mvn test' 
-            } 
-        } 
-        stage('Deploy') { 
-            steps { 
-                echo 'Deploying application...' 
-            } 
-        } 
-    } 
-} 
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Alexrusso3108/JENKINS-GRADLE-INTEGRATION.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
+}
